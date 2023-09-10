@@ -1,60 +1,170 @@
-import React from 'react';
-import { MdMic } from "react-icons/md";
-import { HiOutlineBars3, HiMagnifyingGlass } from "react-icons/hi2";
-import { BiVideoPlus } from "react-icons/bi";
-import { FaRegBell } from "react-icons/fa";
+import React from "react";
+import "./Navbar.css";
 import logo from "../assets/yt-logo.png";
 import { Link } from "react-router-dom";
+import { HiOutlineBars3, HiMagnifyingGlass } from "react-icons/hi2";
+import { MdMic } from "react-icons/md";
+import { BiVideoPlus } from "react-icons/bi";
 
-const Navbar = () => {
+import { FaRegBell } from "react-icons/fa";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
+import { useState } from "react";
+
+import {
+  BsFillPlayCircleFill,
+  BsFillCollectionPlayFill,
+  BsPlayBtn,
+} from "react-icons/bs";
+import { MdOutlineVideoLibrary, MdOutlineWatchLater } from "react-icons/md";
+import { BiHistory } from "react-icons/bi";
+import { BiLike } from "react-icons/bi";
+
+function Newnavbar() {
+  const [isActive, setActive] = useState("true");
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
   return (
-    
-    <div className="bg-yt-black h-12 flex items-center pl-4 pr-5 justify-between fixed w-full z-10">
-        <div className="flex justify-between items-center">
-            <div className="text-yt-white p-3 w-12 text-2xl text-center hover:bg-yt-light-black   rounded-full cursor-pointer">
-                <HiOutlineBars3 />
-            </div>
-            <div className="p-6 w-32">
-                <Link to="/">
-                    <img src={logo} alt="" className="object-contain" />
-                </Link>
-            </div>
+    <div className="containers">
+      {/* ----------------------Navbar Start------------------------- */}
+
+      <nav className="flex-div">
+        <div className="left-side flex-div">
+          <span className="menubar fs-3" onClick={handleToggle}>
+            {" "}
+            <HiOutlineBars3 />
+          </span>
+
+          <Link to="/">
+            <img src={logo} alt="Youtube logo" className="" />
+          </Link>
         </div>
-        <div className="h-8 flex flex-row items-center">
-        <div className="w-[593px] bg-yt-black flex border border-yt-light-black
-         items-center rounded-3xl h-8">
-          <input
-            type="text"
-            placeholder="Search"
-            className="w-full bg-yt-black h-4 ml-6 text-yt-white text-start focus:outline-none pl-4"
-          />
-          <button className="w-16 h-8 bg-yt-light-black px-2 py-0.5 rounded-r-3xl border-l-2 border-yt-light-black">
-            <HiMagnifyingGlass
-              size={22}
-              className="text-yt-white inline-block text-center font-thin"
-            />
+        <div className="middle flex-div ">
+          <div className="search-box flex-div">
+            <input type="text" placeholder="Search" />
+            <button className="fs-4">
+              <HiMagnifyingGlass />
+            </button>
+          </div>
+
+          <button className="fs-4 mic-icon">
+            {" "}
+            <MdMic />
           </button>
         </div>
-        <div className="text-yt-white bg-yt-light w-10 h-10 items-center flex justify-center rounded-full ml-4 hover:bg-yt-light-black cursor-pointer">
-          <MdMic className="text-center " size={23} />
+        <div className="right-side flex-div">
+          <i className="fs-4 small">
+            <BiVideoPlus />
+          </i>
+          <i className="fs-4 small">
+            <FaRegBell />
+          </i>
+          <i className="fs-4">
+            <FaRegCircleUser />
+          </i>
         </div>
-      </div>
-      <div className="flex items-center justify-center">
-        <div className="flex flex-row items-center">
-          <div className="mr-2 p-3 w-10 hover:bg-yt-light-black rounded-full cursor-pointer">
-            <BiVideoPlus size={25} className="text-yt-white text-center" />
-          </div>
-          <div className="mx-3 p-3 w-10 hover:bg-yt-light-black rounded-full cursor-pointer">
-            <FaRegBell size={20} className="text-center text-yt-white" />
-          </div>
-          <div className="mx-3 items-center cursor-pointer">
-              <button className="bg-yt-red py-1 px-4 text-yt-white rounded-full">Sign In</button>
-          </div>
-        </div>
+      </nav>
+      {/* ----------------------Navbar End-------------------------- */}
+
+      {/* --------------------- Side Bar Start--------------------- */}
+
+      <aside className={`navigate-links ${isActive ? "activate" : "null"}`}>
+        <Link
+          activeclassName="active"
+          to="/"
+          key="0"
+          className={`navlinks ${isActive}`}
+        >
+          <span className="icon">
+            <FaHome />
+          </span>
+          <span className={`${isActive}`}>Home</span>
+        </Link>
+        <Link
+          key="1"
+          to="/shorts"
+          className={`navlinks ${isActive}`}
+          activeclassName="active"
+        >
+          <span className="icon">
+            <BsFillPlayCircleFill />
+          </span>
+          <span className={`${isActive}`}>Shorts</span>
+        </Link>
+        <Link
+          key="2"
+          to="/subscription"
+          activeclassName="active"
+          className={`navlinks ${isActive}`}
+        >
+          <span className="icon">
+            <BsFillCollectionPlayFill />
+          </span>
+          <span v>Subscription</span>
+        </Link>
+        <hr className={`${isActive} text-white me-2`} />
+        <Link
+          key="3"
+          to="/library"
+          activeclassName="active"
+          className="navlinks"
+        >
+          <span className={`icon ${isActive}`}>
+            <MdOutlineVideoLibrary />
+          </span>
+          <span className={`${isActive}`}>Library</span>
+        </Link>
+        <Link
+          to="/history"
+          key="4"
+          activeclassName="active"
+          className="navlinks"
+        >
+          <span className={`icon ${isActive}`}>
+            <BiHistory />
+          </span>
+          <span className={`${isActive}`}>History</span>
+        </Link>
+        <Link
+          to="/yourvideos"
+          key="5"
+          activeclassName="active"
+          className="navlinks"
+        >
+          <span className={`icon ${isActive}`}>
+            <BsPlayBtn />
+          </span>
+          <span className={`${isActive}`}>Your Videos</span>
+        </Link>
+        <Link
+          to="/watchlater"
+          key="6"
+          activeclassName="active"
+          className="navlinks"
+        >
+          <span className={`icon ${isActive}`}>
+            <MdOutlineWatchLater />
+          </span>
+          <span className={`${isActive}`}>Watch Later</span>
+        </Link>
+        <Link
+          to="/likedvideos"
+          key="7"
+          activeclassName="active"
+          className="navlinks"
+        >
+          <span className={`icon ${isActive}`}>
+            <BiLike />
+          </span>
+          <span className={`${isActive}`}>Liked Videos</span>
+        </Link>
+      </aside>
+
+      {/* --------------------- Side Bar End----------------------- */}
     </div>
-  </div>
-  
-  )
+  );
 }
 
-export default Navbar;
+export default Newnavbar;

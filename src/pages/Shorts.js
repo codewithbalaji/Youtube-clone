@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Videos from "../components/Videos";
 
-const Shorts = () => {
+function Shorts() {
   return (
-    <div>Shorts</div>
-  )
+    <div
+      className="mt-2 shortsVideo"
+      style={{ backgroundColor: "rgb(16, 14, 14)" }}
+    >
+      <Videos />
+    </div>
+  );
 }
 
-export default Shorts
+export default Shorts;

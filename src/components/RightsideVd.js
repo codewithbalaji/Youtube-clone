@@ -1,8 +1,8 @@
 import React, { useState } from "react"; // Import useState
-import Filter from "../components/Filtered";
+import RightFilter from "../components/rightFilter";
 import { Link } from "react-router-dom";
-import "../components/Home.css";
-function Home() {
+
+function RightSidevd() {
   const [selectedFilter, setSelectedFilter] = useState("all"); // Initialize with "all"
   // ...
   const videos = [
@@ -14,7 +14,7 @@ function Home() {
         "https://yt3.ggpht.com/ZXdU2_la3sKTncWwYaF-sU3jCDaFsIG_uQC6tOmhgqsFsUDLNlDytibY-4NSx0xOWWbp2HIV=s48-c-k-c0x00ffffff-no-rj",
       title: "web design by reactjs for frontEnd",
       channelName: "Akil",
-      subscribers: "123K ",
+      subscribers: "50k Views . 1 Year ago ",
       dataItem: "css", // Filter category
     },
     {
@@ -164,7 +164,7 @@ function Home() {
     {
       id: 15,
       thumbnailSrc:
-        "https://th.bing.com/th/id/OIP.x8Fp9uOPgEaQdig7hV70qwHaGa?pid=ImgDet&rs=1",
+        "	https://i.ytimg.com/vi/7T3gVzKHOlU/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLDiQiLzGQLRLrXIHqfaUtp5CqkmFg",
       channelIconSrc:
         "https://yt3.ggpht.com/sm9KjocCAAXBPB5gyBMk24j6ZWk2t8nOw2ID_00u5fiS2qBH3MIiphaklt5wq91KeSCHwlCz=s48-c-k-c0x00ffffff-no-rj",
       title:
@@ -221,7 +221,7 @@ function Home() {
     {
       id: 20,
       thumbnailSrc:
-        "https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/12/02080547/Website-Navigation-Bar-Examples-to-Enhance-Your-Web-Design_FeaturedImage_Vertical-700x950.jpeg",
+        "https://i.ytimg.com/vi/G4O3Hon8Sh0/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLA8wFrJMJ-OIUDkaoSQYJzsMBnWAA",
       channelIconSrc:
         "https://yt3.ggpht.com/ytc/AOPolaReFpOoeq7FZ3A0u6MOKndgE57CV-5vpqGIlt4yBA=s48-c-k-c0x00ffffff-no-rj",
       title: "Building website with C++",
@@ -349,53 +349,59 @@ function Home() {
     selectedFilter === "all"
       ? videos
       : videos.filter((video) => video.dataItem === selectedFilter);
-  // history function
-  let histryvideo = [];
-  const historyvideo = (video) => {
-    const savedHistory = JSON.parse(localStorage.getItem("historyvid")) || [];
-    histryvideo.push(video);
-    const updatedHistory = [...savedHistory, ...histryvideo];
-    localStorage.setItem("historyvid", JSON.stringify(updatedHistory));
-  };
 
   return (
-    <div
-      style={{ position: "absolute", left: "14rem", top: "120px", zIndex: "9" }}
-      className="main"
-    >
-      <Filter
-        selectedFilter={selectedFilter}
-        setSelectedFilter={setSelectedFilter}
-      />
-      <div className="video-container">
-        {filteredVideos.map((video) => (
-          <Link
-            to={`/video/${video.id}`}
-            key={video.id}
-            onClick={() => {
-              historyvideo(video);
-            }}
-          >
-            <div className="video box">
-              <img className="thumbnail" src={video.thumbnailSrc} alt="" />
-
-              <div className="content">
+    <div>
+      <div
+        style={{
+          width: "480px",
+          height: "100vh",
+          marginTop: "40px",
+          position: "relative",
+        }}
+      >
+        <RightFilter
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+        />
+        <div style={{ marginTop: "2rem" }} className=" right_video-container">
+          {filteredVideos.map((video) => (
+            <Link
+              to={`/video/${video.id}`}
+              key={video.id}
+              className="text-decoration-none"
+            >
+              <div
+                style={{
+                  width: "240px",
+                  marginBottom: "-50px",
+                }}
+                className=" d-flex video box"
+              >
                 <img
-                  className="thumbnail channel-icon"
-                  src={video.channelIconSrc}
+                  className="right_thumbnail"
+                  src={video.thumbnailSrc}
                   alt=""
                 />
-                <div className="info">
-                  <h4 className="title_1">{video.title}</h4>
-                  <p className="channel-name">{video.channelName}</p>
-                  <p className="views">{video.subscribers} subscribers</p>
+
+                <div className=" content">
+                  {/* <img
+                    className="thumbnail channel-icon"
+                    src={video.channelIconSrc}
+                    alt=""
+                  /> */}
+                  <div style={{ width: "10rem" }} className="info ">
+                    <h3 className="title_1 ">{video.title}</h3>
+                    <p className="channel-name">{video.channelName}</p>
+                    <p className=" views">{video.subscribers} subscribers</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-export default Home;
+export default RightSidevd;

@@ -1,0 +1,125 @@
+/* src/App.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.card {
+  background-color: #444;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+/* Split the screen in half */
+.split {
+  height: 100%;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 15%;
+  background-color: #111;
+  width: 35%;
+  top: 5%;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #111;
+  width: 50%;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  top: 0%;
+  left: 25%;
+
+  text-align: left;
+}
+.card {
+  background-color: rgb(75, 40, 29);
+  height: 35rem;
+  width: 500px;
+  left: 50px;
+  border-radius: 5%;
+}
+.card-description {
+  color: azure;
+}
+
+.card-description :hover {
+  color: rgb(70, 73, 73);
+}
+.card-icons {
+  color: azure;
+  font-size: x-large;
+}
+.card-icons :hover {
+  color: rgb(142, 149, 149);
+  font-size: x-large;
+}
+
+.icon-button {
+  color: #111;
+  background-color: azure;
+  border-radius: 15%;
+}
+.icon-button :hover {
+  background-color: rgb(142, 149, 149);
+
+  color: #e2e2e2;
+  border-radius: 20%;
+}
+.icon-button2 {
+  color: azure;
+  background-color: rgb(96, 43, 19);
+  border-radius: 15%;
+}
+.icon-button2 :hover {
+  background-color: rgb(142, 149, 149);
+}
